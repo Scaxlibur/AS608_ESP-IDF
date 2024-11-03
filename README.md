@@ -1,32 +1,31 @@
-# _Sample project_
+# AS608指纹模块在ESP-IDF环境下的驱动
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+ESP-IDF版本：v5.3.1
 
-This is the simplest buildable example. The example is used by command `idf.py create-project`
-that copies the project to user specified path and set it's name. For more information follow the [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project)
+测试用开发板：ESP32-S3 DevkitC-1
 
+使用C++开发
 
+## 功能
+实现了模块文档描述的几乎所有功能，包括读/写指纹，读/写记事本、删除指纹数据库等。
 
-## How to use example
-We encourage the users to use the example as a template for the new projects.
-A recommended way is to follow the instructions on a [docs page](https://docs.espressif.com/projects/esp-idf/en/latest/api-guides/build-system.html#start-a-new-project).
+默认使用UART1，TXD端口为GPIO17，RXD端口为GPIO18。
 
-## Example folder contents
+## 如何使用
 
-The project **sample_project** contains one source file in C language [main.c](main/main.c). The file is located in folder [main](main).
+`#include "fingerID.hpp"`
 
-ESP-IDF projects are built using CMake. The project build configuration is contained in `CMakeLists.txt`
-files that provide set of directives and instructions describing the project's source files and targets
-(executable, library, or both). 
-
-Below is short explanation of remaining files in the project folder.
+## 文档结构
 
 ```
 ├── CMakeLists.txt
+├── .vscode
 ├── main
 │   ├── CMakeLists.txt
-│   └── main.c
-└── README.md                  This is the file you are currently reading
+│  	├── fingerID.cpp		驱动原文件		
+│	├── fingerID.hpp		驱动头文件
+│	└── main.c
+├── LICENSE
+├── .gitignore
+└── README.md				你现在正在阅读的
 ```
-Additionally, the sample project contains Makefile and component.mk files, used for the legacy Make based build system. 
-They are not used or needed when building with CMake and idf.py.
